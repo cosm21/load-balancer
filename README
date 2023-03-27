@@ -1,0 +1,33 @@
+Load Balancer
+
+Fisiere:
+    linkedlist    - lista inlantuita simpla folosita pentru hashtable
+    ocdll         - ordered comparable doubly linked list, lista inlantuita
+                        in care elementele sunt pastrate in ordine
+    hashtable     - tabela de dispersie care rezolva coliziunile folosind
+                        lista simplu inlantuita
+    server        - implementarea pentru un server din sistemul distribuit,
+                        in cazul de fata fiecare server este un hashtable
+    load_balancer - reprezentarea pentru un load balancer care suporta
+                        adaugarea si eliminarea dinamica a serverelor
+
+Descrierea implementarii:
+    Load balancer-ul suporta adaugarea a mai multe servere, acesta folosindu-se
+    de lista inlantuita ordonata pentru a gasi serverul care are hash-ul mai
+    mare decat hash-ul cheii care se introduce. Pentru a asigura o distributie
+    uniforma a cheilor atunci cand se introduce un server, se introduc si
+    "replici", referinte catre hashtable-ul acestuia. La eliminarea unui server
+    cheile pastrate de acesta sunt redistribuite.
+
+Structura fisierului de intrare:
+    Fiecare linie trebuie poate sa contine urmatoarele comenzi:
+    - add_server <numar>          - adauga server-ul cu numarul dat
+    - remove_server <numar>       - elimina server-ul cu numarul dat
+    - store "<cheie>" "<valoare>" - introduce in baza de date cheia
+                                        cu valoarea data
+    - retrieve "<cheie>"          - extrage valoarea asociata chei date
+
+Compilare si rulare:
+    make                  - genereaza executabilul "loadbalancer"
+    loadbalancer <fisier> - ruleaza simularea, citind comenzile din fisierul
+                                specificat
